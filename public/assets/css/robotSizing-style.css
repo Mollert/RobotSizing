@@ -1,0 +1,27 @@
+
+body {
+  background-color: white;
+}
+
+.row-radio {
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+
+.form-check-label {
+	margin-left: 24px;
+}
+
+#radioMetric,
+#radioUS {
+	margin-right: 6px;
+}
+
+.row-label {
+	margin-bottom: 2px;
+}
+
+input[type=number] {
+    border: none;
+    border-bottom: 2px solid blue;
+}
