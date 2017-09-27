@@ -1,7 +1,10 @@
+console.log("Home free");
+
 
 var units = "metric";
 
 $(":radio").on("click", function() {
+    console.log("Are we here yet");
 
 	$(":radio").not(':checked').prop("checked", false);
 	if (this.value == "metric") {
@@ -14,14 +17,13 @@ $(":radio").on("click", function() {
         $("#sizeX, #sizeY, #sizeZ, #gravityX, #gravityY, #gravityZ, #robotReach").attr("placeholder", "in");
         $("#partMass").attr("placeholder", "lbs");
     }
-//	moving();
+	moving();
 });
 
 
 function moving() {
     console.log(units + " inside");
 };
-
 
 
 

@@ -1,75 +1,85 @@
-
 <div class="container">
 	<div class="row">
-		<div class="project">
-			<div class="titleTextOnly">Available Projects</div>
-			<div class="adderText">
-				{{#each fakeProjects}}
-					<ul>
-						<li>
-							<img src="{{this.image_link}}" alt="Image Pic" style="width:300px;height:150px;">
-							<p>Project Title: {{this.project_title}}</p>
-							<p>This project is funded at ${{this.funding}}</p>	
-						</li>
-					</ul>
-				{{/each}}
-				<form id="getProjects" action="/projects" method="GET">
-					<input type="submit" class="btn btn-success btn-lg" value="Get Projects">
-				</form>
+		<div class="col-md-5 col-xs-12">
+			<div class="row row-radio">
+				<div class="form-inline">
+					<label class="selectUnits">Units</label>
+					<label class="form-check-label">
+						<input type="radio" name="unitSelector" id="radioMetric" value="metric" checked="checked">Metric
+					</label>
+					<label class="form-check-label">
+						<input type="radio" name="unitSelector" id="radioUS" value="us">US
+					</label>
+					</label>
+				</div>
 			</div>
+			<hr/>
+			<form id="retrieveData" action="/retrieveData" method="POST">
+				<div class="form-group row row-label">
+					<label class="partSize">Part Size</label>
+				</div>
+				<div class="form-group row">				
+					<label for="sizeX" class="col-form-label">X =</label>
+					<div class="col-3">
+						<input type="number" class="form-control" id="sizeX" name="sizeX" placeholder="mm">
+					</div>		
+					<label for="sizeY" class="col-form-label">Y =</label>
+					<div class="col-3">
+						<input type="number" class="form-control" id="sizeY" name="sizeY" placeholder="mm">
+					</div>	
+					<label for="sizeZ" class="col-form-label">Z =</label>
+					<div class="col-3">
+						<input type="number" class="form-control" id="sizeZ" name="sizeZ" placeholder="mm">
+					</div>
+				</div>
+				<hr/>
+				<div class="form-group row row-label">
+					<label class="gravityCenter">Distance from Mounting Point to Center of Gravity</label>
+				</div>
+				<div class="form-group row">				
+					<label for="gravityX" class="col-form-label">X =</label>
+					<div class="col-3">
+						<input type="number" class="form-control" id="gravityX" name="gravityX" placeholder="mm">
+					</div>		
+					<label for="gravityY" class="col-form-label">Y =</label>
+					<div class="col-3">
+						<input type="number" class="form-control" id="gravityY" name="gravityY"placeholder="mm">
+					</div>	
+					<label for="gravityZ" class="col-form-label">Z =</label>
+					<div class="col-3">
+						<input type="number" class="form-control" id="gravityZ" name="gravityZ"placeholder="mm">
+					</div>
+				</div>
+				<hr/>
+				<div class="form-group row">				
+					<label for="partMass" class="col-form-label">Part Mass =</label>
+					<div class="col-3">
+						<input type="number" class="form-control" id="partMass" name="partMass" placeholder="kg">
+					</div>
+				</div>
+				<hr/>
+				<div class="form-group row">				
+					<label for="robotreach" class="col-form-label">Robot Reach =</label>
+					<div class="col-3">
+						<input type="number" class="form-control" id="robotReach" name="robotReach" placeholder="mm">
+					</div>
+				</div>
+				<hr/>
+				<div class="form-group row">
+					<button type="submit" class="btn btn-success">Size Robot</button>
+				</div>
+			</form>
+		</div>
+		<div class="col-md-7 col-xs-12">
+			<img src="assets/image/box-assy.png" alt="The box goes here?" id="visualApp" style="height:100%; width:100%;"/>
 		</div>
 	</div>
-	<div class="row">
-		<div class="amount">
-			<div class="titleText">Get the projects amount</div>
-			<div class="gettingAmount">			
-				<form id="projectAmount" action="/projectAmount" method="POST">
-					<div class="form-group">
-						<input type="text" class="form-control" id="project" name="project_title" placeholder="List project's name here">
-					</div>
-					<div class="form-group">
-						<input type="submit" class="btn btn-success btn-lg" value="Get Project Amount">
-					</div>
-				</form>
-			</div>
-			<div class="adderText">The {{am}} project is funder at ${{amount}}</div>
-		</div>
-	</div>
-		<div class="row">
-		<div class="addAmount">
-			<div class="titleText">Contribute to a project</div>
-			<div class="contributeProject">			
-				<form id="contribute" action="/contribute" method="POST">
-					<div class="form-group">
-						<input type="text" class="form-control" id="giveProject" name="project_title" placeholder="List project's name here">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" id="giveAmount" name="funding" placeholder="List the amount you want to contribute here">
-					</div>					
-					<div class="form-group">
-						<input type="submit" id="newContro"class="btn btn-success btn-lg" value="Contribute">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="funders">
-			<div class="titleText">List of Funders</div>
-			<div class="adderText">
-				<ul>
-					{{#each fakeFunders}}
-						<li>
-							<p>Funders: {{this.funder}}</p>
-						</li>
-					{{/each}}
-				</ul>
-				<form id="getFunders" action="/funders" method="GET">
-					<input type="submit" class="btn btn-success btn-lg" value="Get Funders">
-				</form>				
-			</div>
-		</div>
-	</div>
+</div>
+
+
+
+
+<!--
 	<div class="row">
 		<div class="afunder">
 			<div class="titleText">Add a Funder</div>
@@ -86,4 +96,4 @@
 			<div class="adderText">The new funder is {{nm}}</div>
 		</div>
 	</div>
-</div>
+

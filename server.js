@@ -21,5 +21,5 @@ var routes = require("./controllers/robotSizing-controller.js")
 app.use("/", routes);
 
 app.listen(port, function() {
-  console.log("Turned On and Tuned Up on PORT " + port);
+  console.log("Tuned In and Turned On to port " + port);
 });
