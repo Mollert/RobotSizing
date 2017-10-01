@@ -1,0 +1,33 @@
+
+<div class="container">
+	<div class="row">
+		<div class="col-5">
+			<img src="/assets/image/robots/{{results.condensed}}.png" alt="Selected Robot" id="robotImage" style="height:auto; width:100%"/>
+		</div>
+		<div class="col-7">
+			<section class="results">Here are the results</section>			
+			<section class="model">Suggested robot model: {{results.model}}</section>
+			<section class="reach">It has a reach envelope of: {{results.reach}}mm.</section>		
+			<section class="capasity">It's maximum payload is: {{results.capacity}}kg which is  {{results.capacityPercentage}}% of its capacity.</section>
+			<section class="moments">This applications moments are:
+				<ul>
+					<li>4th axis: {{results.moment4}} which is {{results.moment4Percent}}% of its capacity.</li>
+					<li>5th axis: {{results.moment5}} which is {{results.moment5Percent}}% of its capacity.</li>
+					<li>6th axis: {{results.moment6}} which is {{results.moment6Percent}}% of its capacity.</li>
+				</ul>				
+			</section>
+			<section class="inertia">This applications inertia is:
+				<ul>
+					<li>X direction: {{results.xInertia}} which is {{results.xInertiaPercent}}% of its capacity.</li>
+					<li>Y direction: {{results.yInertia}} which is {{results.yInertiaPercent}}% of its capacity.</li>
+					<li>Z direction: {{results.zInertia}} which is {{results.zInertiaPercent}}% of its capacity.</li>
+				</ul>				
+			</section>
+			<section class="mounting">Click for mounting details
+				<form action="/moreDetails" method="POST">
+					<input type="submit" class="btn btn-secondary" id="mountingDetails" name="condensed" value="{{results.condensed}}">
+				</form>
+			</section>
+		</div>				
+	</div>
+</div>

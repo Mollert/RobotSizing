@@ -1,35 +1,56 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-5 col-xs-12">
-			<div class="row row-radio">
-				<div class="form-inline">
-					<label class="selectUnits">Units</label>
-					<label class="form-check-label">
-						<input type="radio" name="unitSelector" id="radioMetric" value="metric" checked="checked">Metric
-					</label>
-					<label class="form-check-label">
-						<input type="radio" name="unitSelector" id="radioUS" value="us">US
-					</label>
-					</label>
-				</div>
-			</div>
-			<hr/>
+
+	<button type="submit" id="testing" class="btn btn-success">Testing</button>
+
+	<p onclick="alert('Works');">This is a parpgraph</p>
+	<p onclick="$(this).hide();">This is a parpgraph</p>
+
 			<form id="retrieveData" action="/retrieveData" method="POST">
+				<div class="form-group row">
+					<div class="form-check form-check-inline">
+						<label class="selectUnits">Units</label>
+  						<label class="form-check-label">
+    						<input class="form-check-input" type="radio" name="unitSelector" id="radioMetric" value="metric" checked="checked">Metric
+  						</label>
+					</div>
+					<div class="form-check form-check-inline">
+  						<label class="form-check-label">
+    						<input class="form-check-input" type="radio" name="unitSelector" id="radioUS" value="us">US
+  						</label>
+					</div>
+				</div>
+				<hr/>
+				<div class="form-group row">				
+					<label for="robotreach" class="col-form-label">Robot Reach =</label>
+					<div class="col-3">
+						<input type="text" class="form-control" id="robotReach" name="robotReach" placeholder="mm">
+					</div>
+				</div>
+				<hr/>
+				<div class="form-group row">				
+					<label for="partMass" class="col-form-label">Part Mass =</label>
+					<div class="col-3">
+						<input type="text" class="form-control" id="partMass" name="partMass" placeholder="kg">
+					</div>
+				</div>
+				<hr/>
 				<div class="form-group row row-label">
 					<label class="partSize">Part Size</label>
 				</div>
 				<div class="form-group row">				
 					<label for="sizeX" class="col-form-label">X =</label>
 					<div class="col-3">
-						<input type="number" class="form-control" id="sizeX" name="sizeX" placeholder="mm">
+						<input type="text" class="form-control" id="sizeX" name="sizeX" placeholder="mm">
 					</div>		
 					<label for="sizeY" class="col-form-label">Y =</label>
 					<div class="col-3">
-						<input type="number" class="form-control" id="sizeY" name="sizeY" placeholder="mm">
+						<input type="text" class="form-control" id="sizeY" name="sizeY" placeholder="mm">
 					</div>	
 					<label for="sizeZ" class="col-form-label">Z =</label>
 					<div class="col-3">
-						<input type="number" class="form-control" id="sizeZ" name="sizeZ" placeholder="mm">
+						<input type="text" class="form-control" id="sizeZ" name="sizeZ" placeholder="mm">
 					</div>
 				</div>
 				<hr/>
@@ -39,29 +60,15 @@
 				<div class="form-group row">				
 					<label for="gravityX" class="col-form-label">X =</label>
 					<div class="col-3">
-						<input type="number" class="form-control" id="gravityX" name="gravityX" placeholder="mm">
+						<input type="text" class="form-control" id="gravityX" name="gravityX" placeholder="mm">
 					</div>		
 					<label for="gravityY" class="col-form-label">Y =</label>
 					<div class="col-3">
-						<input type="number" class="form-control" id="gravityY" name="gravityY"placeholder="mm">
+						<input type="text" class="form-control" id="gravityY" name="gravityY"placeholder="mm">
 					</div>	
 					<label for="gravityZ" class="col-form-label">Z =</label>
 					<div class="col-3">
-						<input type="number" class="form-control" id="gravityZ" name="gravityZ"placeholder="mm">
-					</div>
-				</div>
-				<hr/>
-				<div class="form-group row">				
-					<label for="partMass" class="col-form-label">Part Mass =</label>
-					<div class="col-3">
-						<input type="number" class="form-control" id="partMass" name="partMass" placeholder="kg">
-					</div>
-				</div>
-				<hr/>
-				<div class="form-group row">				
-					<label for="robotreach" class="col-form-label">Robot Reach =</label>
-					<div class="col-3">
-						<input type="number" class="form-control" id="robotReach" name="robotReach" placeholder="mm">
+						<input type="text" class="form-control" id="gravityZ" name="gravityZ"placeholder="mm">
 					</div>
 				</div>
 				<hr/>
@@ -75,25 +82,4 @@
 		</div>
 	</div>
 </div>
-
-
-
-
-<!--
-	<div class="row">
-		<div class="afunder">
-			<div class="titleText">Add a Funder</div>
-			<div class="newFunder">			
-				<form id="addFunder" action="/addFunder" method="POST">
-					<div class="form-group">
-						<input type="text" class="form-control" id="funder" name="funder" placeholder="Add Funder's name here">
-					</div>
-					<div class="form-group">
-						<input type="submit" id="nwFunder" class="btn btn-success btn-lg" value="Add a New Funder">
-					</div>
-				</form>
-			</div>
-			<div class="adderText">The new funder is {{nm}}</div>
-		</div>
-	</div>
 

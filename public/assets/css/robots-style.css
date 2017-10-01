@@ -3,9 +3,13 @@ body {
   background-color: white;
 }
 
-.row-radio {
+/*.row-radio {
 	padding-top: 20px;
 	padding-bottom: 10px;
+}
+*/
+.form-check-inline {
+	margin-top: 24px;
 }
 
 .form-check-label {

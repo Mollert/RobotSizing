@@ -16,9 +16,15 @@ app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname ,"views"));
 
-var routes = require("./controllers/robotSizing-controller.js")
+//var routes = require("./controllers/robot-controller.js");
+var routes = require("./controllers/allOther-controller.js");
+var routesPick = require("./controllers/pickRobot-controller.js");
 
 app.use("/", routes);
+//app.use("/retrieveData", routes);
+app.use("/", routesPick);
+//app.use("/moreDetails", routes);
+
 
 app.listen(port, function() {
   console.log("Tuned In and Turned On to port " + port);

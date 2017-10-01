@@ -1,5 +1,5 @@
 
-var robotsArray = [
+var robots = [
 	{
 		"model": "LR Mate-200iD",
 		"payload": 7,
@@ -15,7 +15,7 @@ var robotsArray = [
 			"5thAxis": 0.47,
 			"6thAxis": 0.15
 		},
-		"image": "assets/image/robots/LRMate200iD.png"
+		"condensed": "LRMate200iD"
 	},
 	{
 		"model": "M-10iA",
@@ -32,10 +32,10 @@ var robotsArray = [
 			"5thAxis": 0.22,
 			"6thAxis": 0.06
 		},		
-		"image": "assets/image/robots/M10iA.png"
+		"condensed": "M10iA"
 	},
 	{
-		"model": "M-20iB",
+		"model": "M-20iB25",
 		"payload": 25,
 		"reach": 1778,
 		"5thOffset": 100,
@@ -49,10 +49,10 @@ var robotsArray = [
 			"5thAxis": 2.20,
 			"6thAxis": 1.20
 		},		
-		"image": "assets/image/robots/M20iB25.png"
+		"condensed": "M20iB25"
 	},
 	{
-		"model": "M-710iC",
+		"model": "M-710iC50",
 		"payload": 50,
 		"reach": 2050,
 		"5thOffset": 175,
@@ -66,10 +66,10 @@ var robotsArray = [
 			"5thAxis": 28,
 			"6thAxis": 11
 		},		
-		"image": "assets/image/robots/m710iC.png"
+		"condensed": "M710iC50"
 	},
 	{
-		"model": "R-2000iC",
+		"model": "R-2000iC165F",
 		"payload": 165,
 		"reach": 310,
 		"5thOffset": 215,
@@ -83,10 +83,10 @@ var robotsArray = [
 			"5thAxis": 89,
 			"6thAxis": 46
 		},		
-		"image": "assets/image/robots/R2000iC.png"
+		"condensed": "R2000iC165F"
 	},
 	{
-		"model": "M-900iB",
+		"model": "M-900iB350",
 		"payload": 360,
 		"reach": 2655,
 		"5thOffset": 260,
@@ -100,11 +100,11 @@ var robotsArray = [
 			"5thAxis": 260,
 			"6thAxis": 160
 		},		
-		"image": "assets/image/robots/M900.png"
+		"condensed": "M900iB350"
 	}
 ];
 
-module.exports = robotsArray;
+module.exports = robots;
 
 // moments are in Nm
 // inertia is in kg m^2
