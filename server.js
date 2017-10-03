@@ -24,6 +24,7 @@ app.use("/", routes);
 //app.use("/retrieveData", routes);
 app.use("/", routesPick);
 //app.use("/moreDetails", routes);
+app.use("/contact", routes);
 
 
 app.listen(port, function() {

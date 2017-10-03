@@ -17,4 +17,8 @@ router.post("/moreDetails", function(req, res) {
 	res.render("mounting", {mount});
 });
 
+router.get("/contact", function(req, res) {
+  res.render("contact");
+});
+
 module.exports = router;
