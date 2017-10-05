@@ -2,12 +2,7 @@
 body {
   background-color: white;
 }
-
-/*.row-radio {
-	padding-top: 20px;
-	padding-bottom: 10px;
-}
-*/
+/* index page */
 .form-check-inline {
 	margin-top: 24px;
 }
@@ -24,8 +19,14 @@ body {
 .row-label {
 	margin-bottom: 2px;
 }
+/* results page */
+.results,
+.model,
+.reach,
+.capacity {
+	padding-top: 6px;
+}
 
-input[type=number] {
-    border: none;
-    border-bottom: 2px solid blue;
+.btn {
+	margin-top: 10px;
 }
