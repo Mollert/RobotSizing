@@ -36,7 +36,7 @@ function fig6Moment(distance, mass) {
 }
 
 function fig45Moment(distanceZ, distance5th, mass) {
-	var a = ((distanceZ + distance5th) / 1000) * (mass * 9.81);
+	var a = ((parseFloat(distanceZ) + parseFloat(distance5th)) / 1000) * (mass * 9.81);
 	a = a.toFixed(1);	
 	return a;
 }
@@ -48,7 +48,7 @@ function figPercent(numberVar, numberMain) {
 }
 
 function convertInMm(length) {
-	var a = length * 25.4;
+	var a = length / 25.4;
 	a = a.toFixed(1);	
 	return a;
 }
@@ -65,11 +65,20 @@ function convertLbKg(mass) {
 	return a;
 }
 
-
-
 router.post("/retrieveData", function(req, res) {
 	var data = req.body;
 	console.log(data);
+
+	if (data.unitSelector === "us") {
+		data.robotReach = convertInMm(data.robotReach);
+		data.partMass = convertLbKg(data.partMass);
+		data.sizeX = convertInMm(data.sizeX);
+		data.sizeY = convertInMm(data.sizeY);
+		data.sizeZ = convertInMm(data.sizeZ);
+		data.gravityX = convertInMm(data.gravityX);
+		data.gravityY = convertInMm(data.gravityY);
+		data.gravityZ = convertInMm(data.gravityZ);
+	}
 
 	var selection = 5000;
 	for ( i=0 ; i < robots.length ; i++ ) {
@@ -81,7 +90,7 @@ router.post("/retrieveData", function(req, res) {
 		}
 	}
 
-	var capacityPercent = figPercent(data.partMass, robots[value].payload),
+	var capacityPercent = figPercent(data.partMass, robots[value].payload);
 	var moment4 = fig45Moment(data.gravityZ, robots[value].offset5th, data.partMass);
 	var moment4Percent = figPercent(moment4, robots[value].moment.axis4th);
 	var moment5Percent = figPercent(moment4, robots[value].moment.axis5th);

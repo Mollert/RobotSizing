@@ -8,15 +8,20 @@
 			<section class="results">Here are the results</section>			
 			<section class="model">Suggested robot model: {{results.model}}</section>
 			<section class="reach">It has a reach envelope of: {{results.reach}}mm.</section>		
-			<section class="capasity">It's maximum payload is: {{results.capacity}}kg which is  {{results.capacityPercent}}% of its capacity.</section>
-			<section class="moments">This applications moments are:
+			<section class="capasity">It's maximum payload is: {{results.capacity}}kg.</section>
+			<section class="capacity">
+				<ul>
+					<li>This application uses up only {{results.capacityPercent}}% of its capacity.</li>
+				</ul>
+			</section>				
+			<section class="moments">The moments the robot sees for this application are:
 				<ul>
 					<li>4th axis: {{results.moment4}} which is {{results.moment4Percent}}% of its capacity.</li>
 					<li>5th axis: {{results.moment5}} which is {{results.moment5Percent}}% of its capacity.</li>
 					<li>6th axis: {{results.moment6}} which is {{results.moment6Percent}}% of its capacity.</li>
 				</ul>				
 			</section>
-			<section class="inertia">This applications inertia is:
+			<section class="inertia">The inertia the robot sees from this application is:
 				<ul>
 					<li>X direction: {{results.xInertia}} which is {{results.xInertiaPercent}}% of its capacity.</li>
 					<li>Y direction: {{results.yInertia}} which is {{results.yInertiaPercent}}% of its capacity.</li>
