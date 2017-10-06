@@ -10,9 +10,11 @@ router.get("/", function(req, res) {
 
 router.post("/moreDetails", function(req, res) {
 	var type = req.body.condensed;
-//	console.log(type);
+	var mountFlange = type + "Flange";
+	var mountBase = type + "Base";
 	var mount = {
-		"condensed": type
+		"flange": mountFlange,
+		"base": mountBase
 	};
 	res.render("mounting", {mount});
 });
