@@ -2,11 +2,18 @@
 <body>
 <div class="container">
 	<div class="row">
+		<div class="col-12">
+			<div class="mountingTitle">Here is the mounting information for a {{mount.forModel}} robot.</div>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-6">
-			<img src="/assets/image/connections/{{mount.tight}}Base.png" alt="Selected Robot Base" id="baseImage" style="height:auto; width:100%"/>
+			<div class="baseTitle">Robot base information.</div>
+			<img src="/assets/image/connections/{{mount.forImage}}Base.png" alt="Selected Robot Base" id="baseImage" style="height:auto; width:100%"/>
 		</div>
 		<div class="col-6">
-			<img src="/assets/image/connections/{{mount.tight}}Flange.png" alt="Selected Robot Flange" id="flangeImage" style="height:auto; width:100%"/>
+			<div class="flangeTitle">Robot flange information.</div>
+			<img src="/assets/image/connections/{{mount.forImage}}Flange.png" alt="Selected Robot Flange" id="flangeImage" style="height:auto; width:100%"/>
 		</div>				
 	</div>
 </div>

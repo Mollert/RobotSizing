@@ -67,7 +67,6 @@ function convertLbKg(mass) {
 
 router.post("/retrieveData", function(req, res) {
 	var data = req.body;
-	console.log(data);
 
 	if (data.unitSelector === "us") {
 		data.robotReach = convertInMm(data.robotReach);
