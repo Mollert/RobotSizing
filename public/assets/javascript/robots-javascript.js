@@ -15,7 +15,3 @@ $(":radio").on("change", function() {
         $("#partMass").attr("placeholder", "lbs");
     }
 });    
-
-
-
-

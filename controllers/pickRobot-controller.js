@@ -5,15 +5,7 @@ var router = express.Router();
 
 var robots = require("../dBase/robots.js");
 
-function figInertia(side1, side2, mass) {
-	var b = side1 / 1000;
-	var c = side2 / 1000;	
-	var a = (mass/12) * (Math.pow(b, 2) + Math.pow(c, 2));
-	a = a.toFixed(2);
-	return a;
-}
-
-function disForMoment(distance1, distance2) {
+function disOfHypotenuse(distance1, distance2) {
 	if (distance1 === 0) {
 		var a = distance2.toFixed(1);
 		return a;
@@ -38,6 +30,29 @@ function fig6Moment(distance, mass) {
 function fig45Moment(distanceZ, distance5th, mass) {
 	var a = ((parseFloat(distanceZ) + parseFloat(distance5th)) / 1000) * (mass * 9.81);
 	a = a.toFixed(1);	
+	return a;
+}
+
+function figPartInertia(side1, side2, mass) {
+	var b = side1 / 1000;
+	var c = side2 / 1000;	
+	var a = (mass/12) * (Math.pow(b, 2) + Math.pow(c, 2));
+	a = a.toFixed(2);
+	return a;
+}
+
+function fig6AxisInertia(partIn, dist, mass) {
+	dist = dist / 1000;
+	var a = parseFloat(partIn) + (mass * Math.pow(dist, 2));
+	a = a.toFixed(2);
+	return a;
+}
+
+function fig45AxisInertia(partIn, dist, distZ, offset, mass) {
+	dist = dist / 1000;
+	var b = (parseFloat(distZ) + parseFloat(offset)) / 1000;
+	var a = parseFloat(partIn) + (mass * (Math.pow(b, 2) + Math.pow(dist, 2)));
+	a = a.toFixed(2);
 	return a;
 }
 
@@ -93,14 +108,17 @@ router.post("/retrieveData", function(req, res) {
 	var moment4 = fig45Moment(data.gravityZ, robots[value].offset5th, data.partMass);
 	var moment4Percent = figPercent(moment4, robots[value].moment.axis4th);
 	var moment5Percent = figPercent(moment4, robots[value].moment.axis5th);
-	var moment6Dis = disForMoment(data.gravityX, data.gravityY);
-	var moment6 = fig6Moment(moment6Dis, data.partMass);
+	var distanceFor6 = disOfHypotenuse(data.gravityX, data.gravityY);
+	var moment6 = fig6Moment(distanceFor6, data.partMass);
 	var moment6Percent = figPercent(moment6, robots[value].moment.axis6th);
-	var xInertia = figInertia(data.sizeY, data.sizeZ, data.partMass);
+	var partInertia = figPartInertia(data.sizeY, data.sizeZ, data.partMass);
+	var xInertia = fig45AxisInertia(partInertia, data.gravityY, data.gravityZ, robots[value].offset5th, data.partMass)
 	var xInertiaPercent = figPercent(xInertia, robots[value].inertia.axis4th);
-	var yInertia = figInertia(data.sizeX, data.sizeZ, data.partMass);
+	var partInertia = figPartInertia(data.sizeX, data.sizeZ, data.partMass);
+	var yInertia = fig45AxisInertia(partInertia, data.gravityX, data.gravityZ, robots[value].offset5th, data.partMass)
 	var yInertiaPercent = figPercent(yInertia, robots[value].inertia.axis5th);
-	var zInertia = figInertia(data.sizeX, data.sizeY, data.partMass);
+	var partInertia = figPartInertia(data.sizeX, data.sizeY, data.partMass);
+	var zInertia = fig6AxisInertia(partInertia, distanceFor6, data.partMass)
 	var zInertiaPercent = figPercent(zInertia, robots[value].inertia.axis6th);
 
 	var results = {
