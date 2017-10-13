@@ -31,9 +31,14 @@ body {
 	margin-top: 10px;
 }
 /* mounting page */
-.mountingTitle,
+.mountingTitle, {
+	margin-top: 16px;
+	text-align: center;
+}
+
 .baseTitle,
 .flangeTitle {
 	margin-top: 16px;
+	margin-bottom: 20px;
 	text-align: center;
 }
