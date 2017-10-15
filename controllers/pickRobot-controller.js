@@ -6,7 +6,12 @@ var router = express.Router();
 var robots = require("../dBase/robots.js");
 
 function disOfHypotenuse(distance1, distance2) {
-	if (distance1 === 0) {
+	distance1 = parseFloat(distance1);
+	distance2 = parseFloat(distance2);
+	if (distance1 === 0 && distance2 === 0) {
+		return 0.0;
+	}
+	else if (distance1 === 0) {
 		var a = distance2.toFixed(1);
 		return a;
 	}
@@ -22,13 +27,15 @@ function disOfHypotenuse(distance1, distance2) {
 }
 
 function fig6Moment(distance, mass) {
-	var a = (distance / 1000) * (mass * 9.81);
+	var a = distance / 1000 * mass * 9.81;
 	a = a.toFixed(1);	
 	return a;
 }
 
 function fig45Moment(distanceZ, distance5th, mass) {
-	var a = ((parseFloat(distanceZ) + parseFloat(distance5th)) / 1000) * (mass * 9.81);
+	distanceZ = parseFloat(distanceZ);
+	distance5th = parseFloat(distance5th);
+	var a = (distanceZ + distance5th) / 1000 * mass * 9.81;
 	a = a.toFixed(1);	
 	return a;
 }
@@ -36,7 +43,7 @@ function fig45Moment(distanceZ, distance5th, mass) {
 function figPartInertia(side1, side2, mass) {
 	var b = side1 / 1000;
 	var c = side2 / 1000;	
-	var a = (mass/12) * (Math.pow(b, 2) + Math.pow(c, 2));
+	var a = mass / 12 * (Math.pow(b, 2) + Math.pow(c, 2));
 	a = a.toFixed(2);
 	return a;
 }
@@ -49,9 +56,12 @@ function fig6AxisInertia(partIn, dist, mass) {
 }
 
 function fig45AxisInertia(partIn, dist, distZ, offset, mass) {
+	partIn = parseFloat(partIn);
+	distZ = parseFloat(distZ);
+	offset = parseFloat(offset);
 	dist = dist / 1000;
-	var b = (parseFloat(distZ) + parseFloat(offset)) / 1000;
-	var a = parseFloat(partIn) + (mass * (Math.pow(b, 2) + Math.pow(dist, 2)));
+	var b = (distZ + offset) / 1000;
+	var a = partIn + (mass * (Math.pow(b, 2) + Math.pow(dist, 2)));
 	a = a.toFixed(2);
 	return a;
 }
@@ -82,6 +92,14 @@ function convertLbKg(mass) {
 
 router.post("/retrieveData", function(req, res) {
 	var data = req.body;
+
+	if (data.robotReach === "") {
+		data.robotReach = 0;
+	}
+
+	if (data.partMass === "") {
+		data.partMass = 0;
+	}
 
 	if (data.unitSelector === "us") {
 		data.robotReach = convertInMm(data.robotReach);
@@ -142,8 +160,6 @@ router.post("/retrieveData", function(req, res) {
 	};
 	res.render("results", {results});
 });
-
-
 
 /*
 router.post("/retrieveData", function(req, res) {
