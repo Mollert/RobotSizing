@@ -2,15 +2,15 @@
 var robots = [
 	{
 		"model": "LR Mate-200iD",
-		"payload": 7,
-		"reach": 717,
-		"offset5th": 80,
-		"moment": {
+		"payload": 7, //in kg
+		"reach": 717, //in mm
+		"offset5th": 80, //in mm
+		"moment": { //in Nm
 			"axis4th": 16.6,
 			"axis5th": 16.6,
 			"axis6th": 9.4
 		},
-		"inertia": {
+		"inertia": { //in kg m^2
 			"axis4th": 0.47,
 			"axis5th": 0.47,
 			"axis6th": 0.15
@@ -52,6 +52,23 @@ var robots = [
 		"condensed": "M20iB25"
 	},
 	{
+		"model": "M-20iA35M",
+		"payload": 35,
+		"reach": 1811,
+		"offset5th": 100,
+		"moment": {
+			"axis4th": 110,
+			"axis5th": 110,
+			"axis6th": 60
+		},
+		"inertia": {
+			"axis4th": 4.0,
+			"axis5th": 4.0,
+			"axis6th": 1.5
+		},		
+		"condensed": "M20iA35M"
+	},
+	{
 		"model": "M-710iC50",
 		"payload": 50,
 		"reach": 2050,
@@ -67,6 +84,23 @@ var robots = [
 			"axis6th": 11
 		},		
 		"condensed": "M710iC50"
+	},
+	{
+		"model": "R-1000iA80F",
+		"payload": 80,
+		"reach": 2230,
+		"offset5th": 175,
+		"moment": {
+			"axis4th": 380,
+			"axis5th": 380,
+			"axis6th": 200
+		},
+		"inertia": {
+			"axis4th": 30,
+			"axis5th": 30,
+			"axis6th": 20
+		},		
+		"condensed": "R1000iA80F"
 	},
 	{
 		"model": "R-2000iC165F",
@@ -101,10 +135,24 @@ var robots = [
 			"axis6th": 160
 		},		
 		"condensed": "M900iB360"
+	},
+	{
+		"model": "M-900iB700",
+		"payload": 700,
+		"reach": 2832,
+		"offset5th": 300,
+		"moment": {
+			"axis4th": 3400,
+			"axis5th": 3400,
+			"axis6th": 1725
+		},
+		"inertia": {
+			"axis4th": 1098,
+			"axis5th": 1098,
+			"axis6th": 444
+		},		
+		"condensed": "M900iB700"
 	}
 ];
 
 module.exports = robots;
-
-// moments are in Nm
-// inertia is in kg m^2

@@ -20,8 +20,9 @@ var routes = require("./controllers/allOther-controller.js");
 var routesPick = require("./controllers/pickRobot-controller.js");
 
 app.use("/", routes);
-app.use("/", routesPick);
+app.use("/moreDetails", routes);
 app.use("/contact", routes);
+app.use("/", routesPick);
 
 app.listen(port, function() {
   console.log("Tuned In and Turned On to port " + port);

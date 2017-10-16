@@ -5,10 +5,12 @@ var router = express.Router();
 
 var robots = require("../dBase/robots.js");
 
+// To home page
 router.get("/", function(req, res) {
 	res.render("index");
 });
 
+// grab which robot from button, find matching robot model name, re-package and send to mounting page
 router.post("/moreDetails", function(req, res) {
 	var type = req.body.condensed;
 	var expanded = "";

@@ -5,6 +5,7 @@ var router = express.Router();
 
 var robots = require("../dBase/robots.js");
 
+// return distance for moment and inertia when center of gravity is off of robot center
 function disOfHypotenuse(distance1, distance2) {
 	distance1 = parseFloat(distance1);
 	distance2 = parseFloat(distance2);
@@ -26,12 +27,14 @@ function disOfHypotenuse(distance1, distance2) {
 	}
 }
 
+// return the moment for the 6th axis (uses prior function as distance)
 function fig6Moment(distance, mass) {
 	var a = distance / 1000 * mass * 9.81;
 	a = a.toFixed(1);	
 	return a;
 }
 
+// return the moment for the 4th and 5th axes (adds "z" distance and robot offset)
 function fig45Moment(distanceZ, distance5th, mass) {
 	distanceZ = parseFloat(distanceZ);
 	distance5th = parseFloat(distance5th);
@@ -40,6 +43,7 @@ function fig45Moment(distanceZ, distance5th, mass) {
 	return a;
 }
 
+// figures the part inertia for all three axes
 function figPartInertia(side1, side2, mass) {
 	var b = side1 / 1000;
 	var c = side2 / 1000;	
@@ -48,6 +52,7 @@ function figPartInertia(side1, side2, mass) {
 	return a;
 }
 
+// figures the inertia from around the robot 6th axis
 function fig6AxisInertia(partIn, dist, mass) {
 	dist = dist / 1000;
 	var a = parseFloat(partIn) + (mass * Math.pow(dist, 2));
@@ -55,6 +60,7 @@ function fig6AxisInertia(partIn, dist, mass) {
 	return a;
 }
 
+// figures the inertia from around the robot 4th and 5th axes
 function fig45AxisInertia(partIn, dist, distZ, offset, mass) {
 	partIn = parseFloat(partIn);
 	distZ = parseFloat(distZ);
@@ -66,6 +72,7 @@ function fig45AxisInertia(partIn, dist, distZ, offset, mass) {
 	return a;
 }
 
+// figures percentage of a number
 function figPercent(numberVar, numberMain) {
 	var a = numberVar / numberMain * 100;
 	a = a.toFixed(1);	
@@ -90,6 +97,7 @@ function convertLbKg(mass) {
 	return a;
 }
 
+// grabs all of user entered data, process data to be displayed, sent to results page
 router.post("/retrieveData", function(req, res) {
 	var data = req.body;
 
@@ -114,7 +122,7 @@ router.post("/retrieveData", function(req, res) {
 
 	var selection = 5000;
 	for ( i=0 ; i < robots.length ; i++ ) {
-		if ( data.robotReach < robots[i].reach && data.partMass < robots[i].payload ) {
+		if ( data.robotReach <= robots[i].reach && data.partMass <= robots[i].payload ) {
   			if (selection > robots[i].reach ) {
 				selection = robots[i].reach;
 				var value = i;
@@ -160,32 +168,5 @@ router.post("/retrieveData", function(req, res) {
 	};
 	res.render("results", {results});
 });
-
-/*
-router.post("/retrieveData", function(req, res) {
-	var data = req.body;
-	console.log(data);
-	var results = {
-	"condensed": "LRMate200iD",
-	"model": "LR Mate-200iD",
-	"reach": "717",
-	"capacity": "7",
-	"capacityPercent": "52",	
-	"moment4": "5.4",
-	"moment4Percent": "2",	
-	"moment5": "16.1",
-	"moment5Percent": "24",		
-	"moment6": "13.6",
-	"moment6Percent": "62",
-	"xInertia": "9.22",
-	"xInertiaPercent": "88",
-	"yInertia": "4.15",
-	"yInertiaPercent": "68",	
-	"zInertia": "7.60",
-	"zInertiaPercent": "71"
-	}
-	res.render("results", {results});
-});
-*/
 
 module.exports = router;

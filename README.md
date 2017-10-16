@@ -1,2 +1,1 @@
-This website uses calculates the moments and inertia in order to select which robot model fits the application
-.
+This website uses the reach and part mass to select the smallest robot and then calculates the moments and inertia in order to see if the robot model that was selected fits the application.
