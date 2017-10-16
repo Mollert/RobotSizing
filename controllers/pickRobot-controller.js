@@ -101,12 +101,10 @@ function convertLbKg(mass) {
 router.post("/retrieveData", function(req, res) {
 	var data = req.body;
 
-	if (data.robotReach === "") {
-		data.robotReach = 0;
-	}
-
-	if (data.partMass === "") {
-		data.partMass = 0;
+	for (var key in data) {
+		if (data[key] === "") {
+			data[key] = 0;
+		}
 	}
 
 	if (data.unitSelector === "us") {
